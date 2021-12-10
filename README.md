@@ -1,3 +1,3 @@
 # Лаба по динсау
 ## Установка зависимостей
-`$ pip install matplotlib control slycot`
+`$ pip install matplotlib control slycot numpy`
