@@ -30,6 +30,7 @@ print('SettlingTime: %.4f' % (info['SettlingTime']))
 plt.plot(T_step, h)
 plt.xlabel('t')
 plt.ylabel('h step')
+plt.title('h[lT], g[lT] = 1')
 plt.show()
 
 # Ошибка step
@@ -40,19 +41,20 @@ e_g, T_e = step(Weg)
 plt.plot(T_e, e_g)
 plt.xlabel('t')
 plt.ylabel('e_g step')
+plt.title('e[lt], g[lt] = 1')
 plt.show()
 
 
 # Ошибка lsim
 t = np.arange(0, 1.1, 0.1)
-print(t)
 g = 2*t + 1
-print('g', g)
+
 e_g_lsim = lsim(Weg, g, t)
 e_g_yout = e_g_lsim[0]
 e_g_time = e_g_lsim[1]
 plt.plot(e_g_time, e_g_yout)
 plt.xlabel('t')
 plt.ylabel('e_g lsim')
+plt.title('e[lT]; g[lT] = 2lT + 1')
 plt.show()
 
