@@ -1,4 +1,4 @@
-from control.matlab import tf, c2d, feedback, stepinfo, step, lsim
+from control.matlab import tf, feedback, step, lsim
 import math
 import matplotlib.pyplot as plt
 import numpy as np
@@ -19,7 +19,7 @@ g1 = (t * t) + (2 * t) + 1
 response = lsim(Wyg, g1, t)
 yout = response[0]
 time = response[1]
-plt.plot(time, yout, 'y', time, g1, 'm')
+plt.step(time, yout, 'y', time, g1, 'm')
 print('Steady-state error: %.4f'% math.fabs(yout[-1] - g1[-1]))
 plt.xlabel('t')
 plt.ylabel('y')
@@ -28,8 +28,8 @@ plt.show()
 
 
 # h[lT] при воздействии g[LT] = 1
-h, t_step = step(Wyg)
-plt.plot(t_step, h, 'g')
+h, t_step = step(Wyg, 5)
+plt.step(t_step, h, 'g')
 plt.xlabel('t')
 plt.ylabel('h step')
 plt.title('h[lT], g[lT] = 1')
@@ -41,7 +41,7 @@ g2 = (t * t) + (2 * t) + 1
 error = lsim(Weg, g2, t)
 error_yout = error[0]
 error_time = error[1]
-plt.plot(error_time, error_yout, 'red')
+plt.step(error_time, error_yout, 'red')
 plt.xlabel('t')
 plt.ylabel('e[lT]')
 plt.title('e[lT], g[lT] = (lT)^2 + 2lT + 1')

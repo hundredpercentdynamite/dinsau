@@ -22,12 +22,12 @@ Wyg_dis = feedback(R_dis * Wn_dis, 1, -1)
 
 
 #Единичное ступ. воздействие
-h, T_step = step(Wyg_dis)
+h, T_step = step(Wyg_dis, 2)
 
 info = stepinfo(Wyg_dis, SettlingTimeThreshold=0.05)
 
 print('SettlingTime: %.4f' % (info['SettlingTime']))
-plt.plot(T_step, h)
+plt.step(T_step, h)
 plt.xlabel('t')
 plt.ylabel('h step')
 plt.title('h[lT], g[lT] = 1')
@@ -36,9 +36,9 @@ plt.show()
 # Ошибка step
 Weg = feedback(1, R_dis * Wn_dis, -1)
 
-e_g, T_e = step(Weg)
+e_g, T_e = step(Weg, 2)
 
-plt.plot(T_e, e_g)
+plt.step(T_e, e_g)
 plt.xlabel('t')
 plt.ylabel('e_g step')
 plt.title('e[lt], g[lt] = 1')
@@ -52,7 +52,7 @@ g = 2*t + 1
 e_g_lsim = lsim(Weg, g, t)
 e_g_yout = e_g_lsim[0]
 e_g_time = e_g_lsim[1]
-plt.plot(e_g_time, e_g_yout)
+plt.step(e_g_time, e_g_yout)
 plt.xlabel('t')
 plt.ylabel('e_g lsim')
 plt.title('e[lT]; g[lT] = 2lT + 1')
