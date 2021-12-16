@@ -5,6 +5,7 @@ import numpy as np
 
 z = tf('z')
 
+tp = 1
 T = 0.1
 W_dis = (z + 4.36) / ((z - 1.0) * (z - 0.53))
 R_dis = ((z - 0.53) * (9425/17956 * z - 6075/17956)) / ((z + 26487/17956) * (z - 1))
@@ -28,7 +29,7 @@ plt.show()
 
 
 # h[lT] при воздействии g[LT] = 1
-h, t_step = step(Wyg, 5)
+h, t_step = step(Wyg, tp)
 plt.step(t_step, h, 'g')
 plt.xlabel('t')
 plt.ylabel('h step')

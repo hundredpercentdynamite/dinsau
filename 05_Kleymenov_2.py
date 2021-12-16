@@ -22,7 +22,7 @@ Wyg_dis = feedback(R_dis * Wn_dis, 1, -1)
 
 
 #Единичное ступ. воздействие
-h, T_step = step(Wyg_dis, 2)
+h, T_step = step(Wyg_dis, tp)
 
 info = stepinfo(Wyg_dis, SettlingTimeThreshold=0.05)
 
@@ -36,7 +36,7 @@ plt.show()
 # Ошибка step
 Weg = feedback(1, R_dis * Wn_dis, -1)
 
-e_g, T_e = step(Weg, 2)
+e_g, T_e = step(Weg, tp)
 
 plt.step(T_e, e_g)
 plt.xlabel('t')
