@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 s = tf('s')
-z = tf('z')
 
 tp = 1
 T = 0.01
