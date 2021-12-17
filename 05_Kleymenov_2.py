@@ -6,7 +6,6 @@ import numpy as np
 s = tf('s')
 z = tf('z')
 
-k = 2
 tp = 1
 T = 0.01
 
