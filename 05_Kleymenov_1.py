@@ -1,4 +1,4 @@
-from control.matlab import tf, feedback, step, lsim
+from control.matlab import tf, feedback, minreal, step, lsim
 import math
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,9 +9,10 @@ tp = 1
 W_dis = (z + 4.36) / ((z - 1.0) * (z - 0.53))
 R_dis = ((z - 0.53) * (9425/17956 * z - 6075/17956)) / ((z + 26487/17956) * (z - 1))
 
-Wyg = feedback(W_dis * R_dis, 1, -1)
-Weg = feedback(1, W_dis * R_dis, -1)
-
+Wyg = minreal(feedback(W_dis * R_dis, 1, -1))
+Weg = minreal(feedback(1, W_dis * R_dis, -1))
+print(Wyg)
+print(Weg)
 # Установившаяся ошибка при воздействии g[lT] = (lT)^2 + 2lT + 1
 t = np.arange(0, 1.1, 0.1)
 g1 = (t * t) + (2 * t) + 1
@@ -28,7 +29,8 @@ plt.show()
 
 
 # h[lT] при воздействии g[LT] = 1
-h, t_step = step(Wyg, tp)
+g3 = t * 1
+h, t_step = step(Wyg, g3, tp)
 plt.step(t_step, h, 'g')
 plt.xlabel('t')
 plt.ylabel('h step')
