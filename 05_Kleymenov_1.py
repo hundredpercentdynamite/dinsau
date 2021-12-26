@@ -29,8 +29,7 @@ plt.show()
 
 
 # h[lT] при воздействии g[LT] = 1
-g3 = t * 1
-h, t_step = step(Wyg, g3, tp)
+h, t_step = step(Wyg, t)
 plt.step(t_step, h, 'g')
 plt.xlabel('t')
 plt.ylabel('h step')
