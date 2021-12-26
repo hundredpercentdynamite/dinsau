@@ -44,7 +44,7 @@ plt.show()
 
 
 # Ошибка lsim
-t = np.arange(0, 1.1, 0.1)
+t = np.arange(0, 1 + T, T)
 g = 2*t + 1
 
 e_g_lsim = lsim(Weg, g, t)
